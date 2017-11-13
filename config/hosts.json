@@ -1,0 +1,40 @@
+{
+  "hosts":[
+    {
+      "hostname": "bjt01",
+      "ip": "10.190.130.91",
+      "username": "sdc",
+      "password": "adw2.0",
+      "files":[
+        {
+          "file_name": "123.txt"
+          "remote_path": "/usr/g/bin/",
+          "local_path": "/usr/MrDataHunter/store/"
+        },
+        {
+          "file_name": "789.txt"
+          "remote_path": "/usr/g/bin/",
+          "local_path": "/usr/MrDataHunter/store/"
+        }
+      ]
+    },
+    {
+      "hostname": "bjt02",
+      "ip": "10.190.130.92",
+      "username": "sdc",
+      "password": "adw2.0",
+      "files":[
+        {
+          "file_name": "456.txt"
+          "remote_path": "/usr/g/bin/",
+          "local_path": "/usr/MrDataHunter/store/"
+        },
+        {
+          "file_name": "321.txt"
+          "remote_path": "/usr/g/bin/",
+          "local_path": "/usr/MrDataHunter/store/"
+        }
+      ]
+    }
+  ]
+}
