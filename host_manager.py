@@ -11,4 +11,5 @@ class Host_Manager(object):
 		self.arg = arg
 
 	def init_hosts(self):
-		
+	"""Init all host node"""
+		pass
