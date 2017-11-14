@@ -25,3 +25,6 @@ class Host_Manager(object):
 
 	def load_json(self):
 		pass
+
+	def a_new_func():
+		pass
