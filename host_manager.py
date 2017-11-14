@@ -19,3 +19,6 @@ class Host_Manager(object):
 
 	def write_json(self):
 		pass
+	
+	def load_json(self):
+		pass
