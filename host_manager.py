@@ -28,3 +28,6 @@ class Host_Manager(object):
 
 	def b_new_func():
 		pass
+
+	def c_new_func():
+		pass
