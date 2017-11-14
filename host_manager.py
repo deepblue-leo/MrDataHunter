@@ -17,5 +17,8 @@ class Host_Manager(object):
 	def get_hosts(self):
 		pass
 
+	def load_json(self):
+		pass
+
 	def write_json(self):
 		pass
