@@ -13,3 +13,9 @@ class Host_Manager(object):
 	def init_hosts(self):
 	"""Init all host node"""
 		pass
+
+	def get_hosts(self):
+		pass
+
+	def write_json(self):
+		pass
