@@ -17,6 +17,12 @@ class Host:
         self.password = password
         self.file = File(file_name, remote_path, local_path)
 
+    def connect():
+        pass
+
+    def disconnect():
+        pass
+
     def __repr__(self):
         return repr((self.hostname, self.ip, self.username, self.password, self.file.file_name, self.file.remote_path, self.file.local_path))
 

@@ -1,27 +1,28 @@
+from file import File
+import json
 
 class Host(object):
     """the mapping to the individual node in hosts.json"""
 
-    def _init_(self, hostname, ip, username, password, file_dict):
-        """init host with parameters, file_dict.key is hunting_file, file_dict.value is store_location"""
+    def __init__(self, hostname, ip, username, password, file_name, remote_path, local_path):
         self._hostname = hostname
         self._ip = ip
         self._username = username
         self._password = password
+        self._file = File(file_name, remote_path, local_path)
 
-        self._file_dict = {}
-        self._file_dict = file_dict
+    def connect(self):
+        pass
+
+    def disconnect(self):
+        pass
+
+    def __repr__(self):
+        return repr((self.hostname, self.ip, self.username, self.password, self._file.file_name, self._file.remote_path, self._file.local_path))
 
     @property
     def hostname(self):
-    """hostname is a readonly property"""
         return self._hostname
-
-    # @hostname.setter
-    # def hostname(self, value):
-    #     if not isinstance(value, str):
-    #         raise TypeError("hostname value must be a string!")
-    #     self._hostname = value
 
     @property
     def ip(self):
@@ -53,20 +54,23 @@ class Host(object):
             raise TypeError("password value must be a string!")
         self._hostname = value
 
-    @property
-    def file_dict(self):
-        return self._file_dict
-
-    def add_A_mrfile(self, aMrFile):
-        self._file_dict[aMrFile._filename] = aMrFile
 
 
-    def del_A_mrfile(self, filename):
-        if filename in self._file_dict.keys():
-            self._file_dict.pop(filename)
 
-    def update_A_mrfile(self, aMrFile):
-        if aMrFile.filename in self._file_dict.keys():
-            sef._file_dict[aMrFile.filename] = aMrFile
-        else:
-            self.add_A_mrfile(aMrFile)
+if __name__ == '__main__':
+    hosts = [
+        Host('bjt01', '10.190.130.91', 'sdc', 'adw2.0', '123.txt', '/usr/g/bin/', '/usr/MrDataHunter/store/'),
+        Host('bjt02', '10.190.130.92', 'sdc', 'adw2.0', '456.txt', '/usr/g/bin/', '/usr/MrDataHunter/store/'),
+        Host('bjt03', '10.190.130.93', 'sdc', 'adw2.0', '789.txt', '/usr/g/bin/', '/usr/MrDataHunter/store/'),
+    ]
+
+    json_str = json.dumps(hosts, default = lambda o: o.__dict__, sort_keys=True, indent=1)
+    print  json_str
+
+    new_hosts_rebuild = json.loads(json_str)
+    print new_hosts_rebuild[1]['_ip']
+
+    new_host = Host(new_hosts_rebuild[0]['_hostname'], new_hosts_rebuild[0]['_ip'], new_hosts_rebuild[0]['_username'], new_hosts_rebuild[0]['_password'],
+                    new_hosts_rebuild[0]['_file']['_file_name'], new_hosts_rebuild[0]['_file']['_remote_path'], new_hosts_rebuild[0]['_file']['_local_path'])
+    new_host.ip = "10.190.130.99"
+    print new_host
